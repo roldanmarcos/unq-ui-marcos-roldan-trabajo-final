@@ -1,4 +1,6 @@
 import Header from '../../components/Header/Header'
+import OptionsMenu from '../../components/OptionsMenu/OptionsMenu'
+import Tablero from '../../components/Tablero/Tablero'
 import './TemplatePage.css'
 
 function TemplatePage() {
@@ -6,7 +8,8 @@ function TemplatePage() {
         <div className='page-container'>
             <Header />
             <div className='body-container'>
-            <div className='object'></div>
+                <OptionsMenu />
+                <Tablero />
             </div>
         </div>
     )

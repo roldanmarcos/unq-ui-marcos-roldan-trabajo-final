@@ -6,11 +6,13 @@
 .body-container {
     background-color: blueviolet;
     padding-top: 50px;
+    padding-bottom: 50px;
     justify-items: center;
+    gap: 20px;
 }
 
 .object {
     background-color: rgb(255, 232, 127);
-    width: 50px;
-    height: 50px;
+    width: 80px;
+    height: 80px;
 }

@@ -2,4 +2,6 @@
     background-color: cadetblue;
     margin: 0;
     height: 60px;
+    justify-items: center;
+    align-content: center;
 }
