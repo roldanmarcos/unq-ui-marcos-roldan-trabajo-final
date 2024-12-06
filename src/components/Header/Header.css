@@ -1,6 +1,7 @@
 .header-container {
-    background-color: cadetblue;
+    background-color: #d9c9b5;
     margin: 0;
+    width: 100vw;
     height: 60px;
     justify-items: center;
     align-content: center;
