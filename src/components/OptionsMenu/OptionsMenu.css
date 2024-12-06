@@ -1,3 +1,20 @@
 .option-menu-container {
-    background-color: burlywood;
+    background-color: rgba(208, 202, 202, 0.871);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.199);
+    justify-items: center;
+    gap: 20px;
+}
+
+.options-container {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding: 10px 0px;
+}
+
+.selected {
+    background-color: #535d45;
+    color: white;
 }

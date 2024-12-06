@@ -1,7 +1,25 @@
 .welcomePageContainer {
-    background-color:brown;
+    background-color: #faf8f3;
     width: 100vw;
     height: 100vh;
-    align-content: center;
-    justify-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    overflow: hidden;
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: transform 1s ease, opacity 1s ease;
+}
+
+.logo.move-up {
+    transform: translateY(-150vh);
+    opacity: 0;
 }

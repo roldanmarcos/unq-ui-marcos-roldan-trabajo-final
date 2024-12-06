@@ -1,8 +1,10 @@
 .button-container {
-    background-color: darkolivegreen;
+    background-color: #728850;
     width:min-content;
     border-radius: 10px;
     padding: 3px 5px;
     border: none;
     cursor: pointer;
-}
+    white-space: nowrap;
+    font-size: 24px;
+};

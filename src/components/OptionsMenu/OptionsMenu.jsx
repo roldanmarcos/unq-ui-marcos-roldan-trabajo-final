@@ -1,14 +1,58 @@
-import Button from '../Button/Button'
-import './OptionsMenu.css'
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Button from '../Button/Button';
+import './OptionsMenu.css';
 
-function OptionsMenu() {
+const OptionsMenu = () => {
+    const [gameMode, setGameMode] = useState('');
+    const [boardSize, setBoardSize] = useState('');
+    const navigate = useNavigate();
+
+    const handleStartGame = () => {
+        if (!gameMode || !boardSize) {
+            alert("Por favor, selecciona el modo de juego y el tamaño del tablero.");
+            return;
+        }
+
+        navigate('/game', { state: { gameMode, boardSize } });
+    };
+
     return (
         <div className='option-menu-container'>
-            <Button text="boton1"/>
-            <Button text="boton2"/>
-            <Button text="boton3"/>
+            <h2>Selecciona el modo de juego:</h2>
+            <div className='options-container'>
+                <Button 
+                    text="Solitario" 
+                    onClick={() => setGameMode('Solitario')} 
+                    className={gameMode === 'Solitario' ? 'selected' : ''}
+                />
+                <Button 
+                    text="1 vs 1" 
+                    onClick={() => setGameMode('1vs1')} 
+                    className={gameMode === '1vs1' ? 'selected' : ''}
+                />
+            </div>
+            <h2>Selecciona el tamaño del tablero:</h2>
+            <div className='options-container'>
+                <Button 
+                    text="4 x 4" 
+                    onClick={() => setBoardSize('4x4')} 
+                    className={boardSize === '4x4' ? 'selected' : ''}
+                />
+                <Button 
+                    text="5 x 5" 
+                    onClick={() => setBoardSize('5x5')} 
+                    className={boardSize === '5x5' ? 'selected' : ''}
+                />
+                <Button 
+                    text="8 x 8" 
+                    onClick={() => setBoardSize('8x8')} 
+                    className={boardSize === '8x8' ? 'selected' : ''}
+                />
+            </div>
+            <Button text="Comenzar partida" onClick={handleStartGame} />
         </div>
-    )
-}
+    );
+};
 
-export default OptionsMenu
+export default OptionsMenu;
