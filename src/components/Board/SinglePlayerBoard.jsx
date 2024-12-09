@@ -74,7 +74,7 @@ const SinglePlayerBoard = ({ boardSize }) => {
 
     return (
         <div className="board-container">
-            {gameWon && (<CongratulationsModal time={timeTaken} onRestart={handleRestart} onChangeMode={handleChangeMode}/>)}
+            {gameWon && (<CongratulationsModal title="¡Ganaste!" subtitle={`Te tomó (${timeTaken}) segundos emparejar todas las cartas.`} onRestart={handleRestart} onChangeMode={handleChangeMode}/>)}
             <div
                 className="board"
                 style={{

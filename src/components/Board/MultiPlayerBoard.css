@@ -1,0 +1,8 @@
+.board {
+    display: grid;
+    gap: 10px;
+    width: 100%;
+    height: 100%;
+    grid-template-columns: repeat(8, 1fr); /* Usando 8 columnas directamente */
+    grid-template-rows: repeat(8, 1fr); /* Asegura 8 filas también */
+}
