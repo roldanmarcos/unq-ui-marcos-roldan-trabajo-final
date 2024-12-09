@@ -10,6 +10,7 @@ const MultiPlayerBoard = ({ boardSize }) => {
     const [currentPlayer, setCurrentPlayer] = useState(1); // 1 o 2
     const [scores, setScores] = useState({ player1: 0, player2: 0 });
     const [gameWon, setGameWon] = useState(false);
+    const [winnerMessage, setWinnerMessage] = useState('');
 
     const navigate = useNavigate();
 
@@ -31,6 +32,7 @@ const MultiPlayerBoard = ({ boardSize }) => {
         setCurrentPlayer(1);
         setScores({ player1: 0, player2: 0 });
         setGameWon(false);
+        setWinnerMessage('');
     };
 
     useEffect(() => {
@@ -62,8 +64,15 @@ const MultiPlayerBoard = ({ boardSize }) => {
     useEffect(() => {
         if (matchedCards.length === cards.length && cards.length > 0) {
             setGameWon(true);
+            if (scores.player1 > scores.player2) {
+                setWinnerMessage('¡Jugador 1 gana!');
+            } else if (scores.player2 > scores.player1) {
+                setWinnerMessage('¡Jugador 2 gana!');
+            } else {
+                setWinnerMessage('¡Es un empate!');
+            }
         }
-    }, [matchedCards, cards]);
+    }, [matchedCards, cards, scores]);
 
     const handleRestart = () => {
         generateBoard(boardSize);
@@ -78,15 +87,15 @@ const MultiPlayerBoard = ({ boardSize }) => {
             {gameWon && (
                 <CongratulationsModal
                     title="¡Juego terminado!"
-                    subtitle={`Puntajes: Jugador 1 (${scores.player1}) - Jugador 2 (${scores.player2})`} 
+                    subtitle={winnerMessage} 
                     onRestart={handleRestart}
                     onChangeMode={handleChangeMode}
                 />
             )}
-            <div className="player-info">
-                <p>Jugador 1: {scores.player1} puntos</p>
-                <p>Jugador 2: {scores.player2} puntos</p>
-                <p>Turno actual: Jugador {currentPlayer}</p>
+            <div className="players-info">
+                <p>Jugador 1: {scores.player1}</p>
+                <h2>Turno actual: Jugador {currentPlayer}</h2>
+                <p>Jugador 2: {scores.player2}</p>
             </div>
             <div
                 className="board"
