@@ -40,9 +40,9 @@ const OptionsMenu = () => {
                     className={boardSize === 16 ? 'selected' : ''}
                 />
                 <Button 
-                    text="5 x 5" 
-                    onClick={() => setBoardSize(25)} 
-                    className={boardSize === 25 ? 'selected' : ''}
+                    text="6 x 6" 
+                    onClick={() => setBoardSize(36)} 
+                    className={boardSize === 36 ? 'selected' : ''}
                 />
                 <Button 
                     text="8 x 8" 
