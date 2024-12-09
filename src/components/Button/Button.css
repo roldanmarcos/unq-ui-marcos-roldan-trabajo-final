@@ -8,3 +8,7 @@
     white-space: nowrap;
     font-size: 24px;
 };
+
+.button-container:hover {
+    background-color: #535d45;
+}

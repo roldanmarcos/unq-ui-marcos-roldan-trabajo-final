@@ -14,13 +14,10 @@ const GamePage = () => {
     return (
       <TemplatePage>
         <div>
-            <h1>Juego: {gameMode}</h1>
-            <h2>Tamaño del tablero: {boardSize}</h2>
-
             {gameMode === 'Solitario' ? (
-                <SinglePlayerBoard size={boardSize} />
+                <SinglePlayerBoard boardSize={boardSize} />
             ) : (
-                <MultiPlayerBoard size={boardSize} />
+                <MultiPlayerBoard boardSize={boardSize} />
             )}
         </div>
       </TemplatePage>

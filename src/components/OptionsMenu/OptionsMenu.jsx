@@ -36,18 +36,18 @@ const OptionsMenu = () => {
             <div className='options-container'>
                 <Button 
                     text="4 x 4" 
-                    onClick={() => setBoardSize('4x4')} 
-                    className={boardSize === '4x4' ? 'selected' : ''}
+                    onClick={() => setBoardSize(16)} 
+                    className={boardSize === 16 ? 'selected' : ''}
                 />
                 <Button 
                     text="5 x 5" 
-                    onClick={() => setBoardSize('5x5')} 
-                    className={boardSize === '5x5' ? 'selected' : ''}
+                    onClick={() => setBoardSize(25)} 
+                    className={boardSize === 25 ? 'selected' : ''}
                 />
                 <Button 
                     text="8 x 8" 
-                    onClick={() => setBoardSize('8x8')} 
-                    className={boardSize === '8x8' ? 'selected' : ''}
+                    onClick={() => setBoardSize(64)} 
+                    className={boardSize === 64 ? 'selected' : ''}
                 />
             </div>
             <Button text="Comenzar partida" onClick={handleStartGame} />
