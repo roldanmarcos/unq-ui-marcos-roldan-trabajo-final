@@ -23,3 +23,12 @@
     transform: translateY(-150vh);
     opacity: 0;
 }
+
+.buttonJugar {
+    transition: transform 1s ease, opacity 1s ease;
+}
+
+.buttonJugar.move-down {
+    transform: translateY(150vh);
+    opacity: 0;
+}
