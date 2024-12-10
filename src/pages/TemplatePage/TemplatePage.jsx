@@ -1,10 +1,10 @@
-import Header from '../../components/Header/Header'
 import './TemplatePage.css'
+import Header from '../../components/Header/Header'
 
-const TemplatePage = ({ children }) => {
+const TemplatePage = ({ children, showBackButton = true }) => {
   return (
     <div className='page-container'>
-      <Header />
+      <Header showBackButton={showBackButton} />
       <div className='body-container'>
         {children}
       </div>
@@ -12,4 +12,4 @@ const TemplatePage = ({ children }) => {
   );
 }
 
-export default TemplatePage
+export default TemplatePage;
