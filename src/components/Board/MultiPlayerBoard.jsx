@@ -18,6 +18,8 @@ const MultiPlayerBoard = ({ boardSize }) => {
         "🍎", "🍌", "🍇", "🍉", "🍓", "🍒", "🍍", "🥝",
         "🍋", "🥭", "🍑", "🥥", "🌽", "🥕", "🍔", "🍕",
         "🍩", "🍪", "🍫", "🍿", "🥨", "🧁", "🍵", "🍷",
+        "🌶️", "🧄", "🥬", "🥗", "🍤", "🍣", "🍛", "🍜",
+        "🍝", "🌮",
     ];
 
     const generateBoard = (numCards) => {
@@ -27,6 +29,7 @@ const MultiPlayerBoard = ({ boardSize }) => {
         const shuffledCards = cardValues.sort(() => Math.random() - 0.5);
     
         setCards(shuffledCards);
+        console.log('Número de cartas generadas:', shuffledCards.length); // Debug aquí
         setFlippedCards([]);
         setMatchedCards([]);
         setCurrentPlayer(1);
@@ -93,9 +96,11 @@ const MultiPlayerBoard = ({ boardSize }) => {
                 />
             )}
             <div className="players-info">
-                <p>Jugador 1: {scores.player1}</p>
+                <div className='points-players'>
+                    <p>Jugador 1: {scores.player1}</p>
+                    <p>Jugador 2: {scores.player2}</p>
+                </div>
                 <h2>Turno actual: Jugador {currentPlayer}</h2>
-                <p>Jugador 2: {scores.player2}</p>
             </div>
             <div
                 className="board"
