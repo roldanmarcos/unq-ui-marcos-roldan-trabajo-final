@@ -6,14 +6,23 @@ import './OptionsMenu.css';
 const OptionsMenu = () => {
     const [gameMode, setGameMode] = useState('');
     const [boardSize, setBoardSize] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
 
     const handleStartGame = () => {
-        if (!gameMode || !boardSize) {
-            alert("Por favor, selecciona el modo de juego y el tamaño del tablero.");
+        if (!gameMode && boardSize) {
+            setErrorMessage("Por favor, selecciona el modo de juego.");
             return;
         }
-
+        if (gameMode && !boardSize) {
+            setErrorMessage("Por favor, selecciona el tamaño del tablero.");
+            return;
+        }
+        if (!gameMode || !boardSize) {
+            setErrorMessage("Por favor, selecciona el modo de juego y el tamaño del tablero.");
+            return;
+        }
+        setErrorMessage('');
         navigate('/game', { state: { gameMode, boardSize } });
     };
 
@@ -50,6 +59,7 @@ const OptionsMenu = () => {
                     className={boardSize === 64 ? 'selected' : ''}
                 />
             </div>
+            {errorMessage && <p className="error-message">{errorMessage}</p>}
             <Button text="Comenzar partida" onClick={handleStartGame} />
         </div>
     );
