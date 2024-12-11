@@ -103,7 +103,7 @@ const MultiPlayerBoard = ({ boardSize }) => {
             >
                 {cards.map((card, index) => (
                     <Card
-                    key={index}
+                    key={`image-${index}`}
                     card={<img src={card} alt={`Card ${index}`} />}
                     flipped={flippedCards.includes(index)}
                     matched={matchedCards.includes(index)}
