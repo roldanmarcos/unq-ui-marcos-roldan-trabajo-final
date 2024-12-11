@@ -1,4 +1,3 @@
-import './OptionPage.css'
 import TemplatePage from '../TemplatePage/TemplatePage';
 import OptionsMenu from '../../components/OptionsMenu/OptionsMenu'
 

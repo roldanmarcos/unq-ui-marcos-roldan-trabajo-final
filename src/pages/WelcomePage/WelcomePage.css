@@ -19,6 +19,10 @@
     transition: transform 1s ease, opacity 1s ease;
 }
 
+.logo h1 {
+    font-weight: 600;
+}
+
 .logo.move-up {
     transform: translateY(-150vh);
     opacity: 0;
