@@ -16,12 +16,11 @@
 .card.flipped {
   background-color: #fff;
   color: #333;
-  transform: scale(1.05);
+  transform: rotateY(180deg);
 }
 
 .card:hover {
   background-color: #ddd;
-  transform: scale(1.05);
 }
 
 .card img {
@@ -29,4 +28,8 @@
   height: 100%;
   object-fit: cover;
   user-select: none;
+}
+
+.card.matched {
+  background-color: #93b462;
 }
