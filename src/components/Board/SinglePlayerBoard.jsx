@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import './SinglePlayerBoard.css';
 import CongratulationsModal from '../CongratulationsModal/CongratulationsModal';
+import Card from '../Card/Card';
 import { useNavigate } from 'react-router-dom';
 
 const SinglePlayerBoard = ({ boardSize }) => {
@@ -33,7 +34,7 @@ const SinglePlayerBoard = ({ boardSize }) => {
         setGameWon(false);
         setTimeTaken(null);
     };
-    
+
     useEffect(() => {
         generateBoard(boardSize);
     }, [boardSize]);
@@ -67,14 +68,20 @@ const SinglePlayerBoard = ({ boardSize }) => {
         generateBoard(boardSize);
     };
 
-
     const handleChangeMode = () => {
         navigate('/options');
     };
 
     return (
         <div className="board-container">
-            {gameWon && (<CongratulationsModal title="¡Ganaste!" subtitle={`Te tomó (${timeTaken}) segundos emparejar todas las cartas.`} onRestart={handleRestart} onChangeMode={handleChangeMode}/>)}
+            {gameWon && (
+                <CongratulationsModal
+                    title="¡Ganaste!"
+                    subtitle={`Te tomó (${timeTaken}) segundos emparejar todas las cartas.`}
+                    onRestart={handleRestart}
+                    onChangeMode={handleChangeMode}
+                />
+            )}
             <div
                 className="board"
                 style={{
@@ -82,15 +89,13 @@ const SinglePlayerBoard = ({ boardSize }) => {
                 }}
             >
                 {cards.map((card, index) => (
-                    <div
+                    <Card
                         key={index}
-                        className={`card ${
-                            flippedCards.includes(index) || matchedCards.includes(index) ? 'flipped' : ''
-                        }`}
+                        card={card}
+                        flipped={flippedCards.includes(index)}
+                        matched={matchedCards.includes(index)}
                         onClick={() => handleCardClick(index)}
-                    >
-                        {flippedCards.includes(index) || matchedCards.includes(index) ? card : '❓'}
-                    </div>
+                    />
                 ))}
             </div>
         </div>

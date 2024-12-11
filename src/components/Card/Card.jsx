@@ -1,14 +1,14 @@
-import './Card.css'
+import './Card.css';
 
-function Card({ card, onClick, isFlipped }) {
+const Card = ({ card, flipped, matched, onClick }) => {
     return (
-      <div
-        className={`card ${isFlipped ? 'flipped' : ''}`}
-        onClick={() => onClick(card)}
-      >
-        {isFlipped ? <span>{card.value}</span> : <span>❓</span>}
-      </div>
+        <div
+            className={`card ${flipped || matched ? 'flipped' : ''}`}
+            onClick={onClick}
+        >
+            {flipped || matched ? card : '❓'}
+        </div>
     );
-  };
+};
 
-export default Card
+export default Card;

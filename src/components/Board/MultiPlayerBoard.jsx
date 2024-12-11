@@ -2,12 +2,13 @@ import { useState, useEffect } from 'react';
 import './MultiPlayerBoard.css';
 import CongratulationsModal from '../CongratulationsModal/CongratulationsModal';
 import { useNavigate } from 'react-router-dom';
+import Card from '../Card/Card';
 
 const MultiPlayerBoard = ({ boardSize }) => {
     const [cards, setCards] = useState([]);
     const [flippedCards, setFlippedCards] = useState([]);
     const [matchedCards, setMatchedCards] = useState([]);
-    const [currentPlayer, setCurrentPlayer] = useState(1); // 1 o 2
+    const [currentPlayer, setCurrentPlayer] = useState(1);
     const [scores, setScores] = useState({ player1: 0, player2: 0 });
     const [gameWon, setGameWon] = useState(false);
     const [winnerMessage, setWinnerMessage] = useState('');
@@ -29,7 +30,6 @@ const MultiPlayerBoard = ({ boardSize }) => {
         const shuffledCards = cardValues.sort(() => Math.random() - 0.5);
     
         setCards(shuffledCards);
-        console.log('Número de cartas generadas:', shuffledCards.length); // Debug aquí
         setFlippedCards([]);
         setMatchedCards([]);
         setCurrentPlayer(1);
@@ -109,15 +109,13 @@ const MultiPlayerBoard = ({ boardSize }) => {
                 }}
             >
                 {cards.map((card, index) => (
-                    <div
-                        key={index}
-                        className={`card ${
-                            flippedCards.includes(index) || matchedCards.includes(index) ? 'flipped' : ''
-                        }`}
-                        onClick={() => handleCardClick(index)}
-                    >
-                        {flippedCards.includes(index) || matchedCards.includes(index) ? card : '❓'}
-                    </div>
+                    <Card
+                    key={index}
+                    card={card}
+                    flipped={flippedCards.includes(index)}
+                    matched={matchedCards.includes(index)}
+                    onClick={() => handleCardClick(index)}
+                />
                 ))}
             </div>
         </div>
