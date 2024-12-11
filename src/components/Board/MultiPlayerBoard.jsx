@@ -3,6 +3,7 @@ import './MultiPlayerBoard.css';
 import CongratulationsModal from '../CongratulationsModal/CongratulationsModal';
 import { useNavigate } from 'react-router-dom';
 import Card from '../Card/Card';
+import images from '../Images/Images';
 
 const MultiPlayerBoard = ({ boardSize }) => {
     const [cards, setCards] = useState([]);
@@ -15,18 +16,10 @@ const MultiPlayerBoard = ({ boardSize }) => {
 
     const navigate = useNavigate();
 
-    const emojiList = [
-        "🍎", "🍌", "🍇", "🍉", "🍓", "🍒", "🍍", "🥝",
-        "🍋", "🥭", "🍑", "🥥", "🌽", "🥕", "🍔", "🍕",
-        "🍩", "🍪", "🍫", "🍿", "🥨", "🧁", "🍵", "🍷",
-        "🌶️", "🧄", "🥬", "🥗", "🍤", "🍣", "🍛", "🍜",
-        "🍝", "🌮",
-    ];
-
     const generateBoard = (numCards) => {
         const numPairs = numCards / 2;
-        const selectedEmojis = emojiList.slice(0, numPairs);
-        const cardValues = [...selectedEmojis, ...selectedEmojis];
+        const selectedImages = images.slice(0, numPairs);
+        const cardValues = [...selectedImages, ...selectedImages];
         const shuffledCards = cardValues.sort(() => Math.random() - 0.5);
     
         setCards(shuffledCards);
@@ -111,7 +104,7 @@ const MultiPlayerBoard = ({ boardSize }) => {
                 {cards.map((card, index) => (
                     <Card
                     key={index}
-                    card={card}
+                    card={<img src={card} alt={`Card ${index}`} />}
                     flipped={flippedCards.includes(index)}
                     matched={matchedCards.includes(index)}
                     onClick={() => handleCardClick(index)}

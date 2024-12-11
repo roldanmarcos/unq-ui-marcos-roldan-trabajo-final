@@ -3,6 +3,7 @@ import './SinglePlayerBoard.css';
 import CongratulationsModal from '../CongratulationsModal/CongratulationsModal';
 import Card from '../Card/Card';
 import { useNavigate } from 'react-router-dom';
+import images from '../Images/Images';
 
 const SinglePlayerBoard = ({ boardSize }) => {
     const [cards, setCards] = useState([]);
@@ -14,19 +15,12 @@ const SinglePlayerBoard = ({ boardSize }) => {
 
     const navigate = useNavigate();
 
-    const emojiList = [
-        "🍎", "🍌", "🍇", "🍉", "🍓", "🍒", "🍍", "🥝",
-        "🍋", "🥭", "🍑", "🥥", "🌽", "🥕", "🍔", "🍕",
-        "🍩", "🍪", "🍫", "🍿", "🥨", "🧁", "🍵", "🍷",
-        "🎨", "🎹", "🎮", "🎲", "🎯", "🎤", "🎧", "🎵",
-    ];
-
     const generateBoard = (numCards) => {
         const numPairs = numCards / 2;
-        const selectedEmojis = emojiList.slice(0, numPairs);
-        const cardValues = [...selectedEmojis, ...selectedEmojis];
+        const selectedImages = images.slice(0, numPairs);
+        const cardValues = [...selectedImages, ...selectedImages];
         const shuffledCards = cardValues.sort(() => Math.random() - 0.5);
-    
+
         setCards(shuffledCards);
         setFlippedCards([]);
         setMatchedCards([]);
@@ -77,7 +71,7 @@ const SinglePlayerBoard = ({ boardSize }) => {
             {gameWon && (
                 <CongratulationsModal
                     title="¡Ganaste!"
-                    subtitle={`Te tomó (${timeTaken}) segundos emparejar todas las cartas.`}
+                    subtitle={`Te tomó ${timeTaken} segundos emparejar todas las cartas.`}
                     onRestart={handleRestart}
                     onChangeMode={handleChangeMode}
                 />
@@ -91,7 +85,7 @@ const SinglePlayerBoard = ({ boardSize }) => {
                 {cards.map((card, index) => (
                     <Card
                         key={index}
-                        card={card}
+                        card={<img src={card} alt={`Card ${index}`} />}
                         flipped={flippedCards.includes(index)}
                         matched={matchedCards.includes(index)}
                         onClick={() => handleCardClick(index)}
